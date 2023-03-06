@@ -1,0 +1,45 @@
+
+
+.wrap{
+  width: 100%;
+  
+  /* margin: 44px auto; */
+  background-color: rgb(242, 242, 219);
+  border: 1px solid #ccc;
+  line-height: 25px;
+  padding-top: 44px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+p{
+  text-indent: 2em;
+}
+
+.round{
+  display: block;
+  position: fixed;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /* border: 1px dashed #000; */
+  opacity: .6;
+}
+
+.s-top-btn{
+  bottom: 100px;
+  background: url(../images/rocket.png) no-repeat 0 0/100% 100%;
+  
+}
+
+.play-btn{
+  bottom: 25px;
+  background: orange url(../images/play.png) no-repeat center/50% 50%;
+  opacity: .6;
+}
+
+.round:hover{
+  opacity: 1;
+}

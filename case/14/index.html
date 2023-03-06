@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8" />
+  	<title>onfocus事件</title>
+    <style type="text/css">
+      input{
+        outline: none;
+        border: 1px solid #ccc;
+      }
+      .search-inpt{
+        color: #999;
+      }
+      .search-inpt.has-value{
+        color: #424242;
+      }
+   
+    </style>
+  </head>
+  <body>
+    <input  type="text" 
+            id="content" 
+            class="search-inpt" 
+            value="请输入关键字"
+            onfocus="if(this.value === '请输入关键字'){
+              this.value = '';
+              this.className += ' has-value';
+            }"
+            onblur="if(this.value === ''){
+              this.value = '请输入关键字';
+              this.className = 'search-inpt';
+            }"/>
+
+    <script type="text/javascript">
+      // var content = document.getElementById('content');
+      // content.onfocus = function(e){
+      //   this.className += ' active'
+      // }
+
+      // content.onblur = function(){
+      //   this.className = 'oInpt'
+      // }
+    </script>
+  </body>
+  
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节点属性、方法、封装方法、DOM结构</title>
+
+</head>
+<body>
+  <div>
+    <ul>
+      <li class="j_li">
+        <!-- 我是一个注释君 -->
+        <h2>我是标题标签</h2>
+        <p>我是段落标签</p>
+        <a href="javascript:;">我是超链接标签</a>
+      </li>
+    </ul>
+  </div>
+  <script type="text/javascript" src="./index.js"></script>
+  <script type="text/javascript">
+    var oLi = document.getElementsByTagName('li')[0];
+    console.log(oLi.childNodes);
+    var liChild = oLi.elemtChild2(8);
+    console.log(liChild);
+  </script>
+</body>
+</html>

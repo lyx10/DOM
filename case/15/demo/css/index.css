@@ -1,0 +1,71 @@
+.wrap{
+  width: 1200px;
+  height: 200px;
+  margin: 200px auto;
+}
+
+.wrap .list{
+  height: 100%;
+}
+
+.wrap .list-item{
+  position: relative;
+  float: left;
+  width: 210px;
+  height: 100%;
+  padding: 10px;
+  transition: all 0.6s;
+}
+
+.wrap .list-item.active{
+  width: 360px;
+  transition: all 0.6s;
+}
+
+.wrap .list-item .card{
+  height: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.wrap .list-item .card:hover{
+  box-shadow: 0 0 10px #ccc;
+}
+
+.list-item .card .title{
+  width: 170px;
+  height: 50%;
+
+}
+
+.list-item .card .title a{
+  color: #424242;
+  font-size: 14px;
+}
+
+.list-item .card .title a:hover{
+  color: #f00;
+}
+
+.list-item .card .price{
+  width: 170px;
+  height: 50%;
+  line-height: 90px;
+  font-size: 20px;
+  color: #f00;
+}
+
+.list-item .card .img{
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  bottom: 20px;
+  right: 15px;
+  transition: all 0.6s;
+}
+
+.list-item.active .card .img{
+  width: 150px;
+  height: 150px;
+  transition: all 0.6s;
+}

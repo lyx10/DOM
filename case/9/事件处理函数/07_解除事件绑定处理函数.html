@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>解除事件绑定处理函数</title>
+    <style type="text/css">
+      button{
+        outline: none;
+        border: 0;
+        width: 100px;
+        height: 30px;
+        background-color: #f00;
+        color: #fff;
+      }
+      .got{
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <button>领取优惠券</button>
+
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName("button")[0];
+      // oBtn.onclick = function(){
+      //   this.innerHTML = '已领取';
+      //   this.className = 'got';
+
+      //   this.onclick = null;
+      // }
+
+      // oBtn.addEventListener('click', test, false);
+
+      oBtn.attachEvent('click', test, false);
+      oBtn.detachEvent('click', test, false);
+
+      function test(){
+        this.innerHTML = '已领取';
+        this.className = 'got';
+
+        this.removeEventListener('click', test, false);
+        console.log(123);
+
+      }
+
+      // oBtn.addEventListener('click', function(){
+      //   this.innerHTML = '已领取';
+      //   this.className = 'got';
+
+      //   this.removeEventListener('click', arguments.callee, false);
+      //   console.log(123);
+
+      // }, false);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>获取伪元素样式属性信息</title>
+  <style>
+    .box{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50px;
+      left: 50px;
+      border: 1px solid #000;
+      background-color: #ccc;
+    }
+    .box::after {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      content: '';
+      display: block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: yellow;
+      font-size: 1em;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script type="text/javascript">
+    var oBox = document.getElementsByClassName('box')[0],
+        oStyle = window.getComputedStyle(oBox, 'after');
+    console.log(oStyle.width);   //50px
+    console.log(oStyle.backgroundColor);  //rgb(255, 255, 0)
+    console.log(oStyle.fontSize);   //16px
+
+  </script>
+</body>
+</html>

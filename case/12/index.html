@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拖拽</title>
+  <style>
+    .box{
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: #ffa500;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script type="text/javascript">
+    var box = document.getElementsByClassName('box')[0],
+        x,
+        y;
+    // document.onmousemove = function(e){
+    //   var e = e || window.event,
+    //       page = pagePos(e);
+    //   box.style.left = page.x + 'px';
+    //   box.style.top = page.y  + 'px';
+    // }
+
+    // 点击鼠标后移动鼠标拖曳盒子，鼠标弹起解除绑定
+    // box.onmousedown = function(e){
+    //   document.onmousemove = function(e){
+    //     var e = e || window.event,
+    //         page = pagePos(e);
+    //     box.style.left = (page.x -10) + 'px';
+    //     box.style.top = (page.y - 10)  + 'px';
+    //   }
+    //   box.onmouseup = function(e){
+    //     document.onmousemove = null;
+    //   }
+    // }
+
+    // 点击鼠标后，鼠标位置仍在盒子里，然后跟着鼠标移动
+    // box.onmousedown = function(e){
+    //   var e = e || window.event,
+    //         page = pagePos(e);
+    //         x = pagePos(e).x - parseInt(getStyle(box, 'left')),
+    //         y = pagePos(e).y - parseInt(getStyle(box, 'top'));
+    //   document.onmousemove = function(e){
+ 
+
+    //     box.style.left = pagePos(e).x - x + 'px';
+    //     box.style.top = pagePos(e).y - y  + 'px';
+    //   }
+    //   document.onmouseup = function(e){
+    //     this.onmousemove = null;
+    //     this.onmouseup = null;
+    //   }
+    // }
+
+    // 封装拖曳函数
+    function elemDrag(el){
+      var x,
+          y;
+      addEvent(el, 'mousedown', function(e){
+        var e = e || window.event;
+        x = pagePos(e).x - parseInt(getStyle(box, 'left')),
+        y = pagePos(e).y - parseInt(getStyle(box, 'top'));
+
+        addEvent(document, 'mousemove', handleMouseMove);
+        addEvent(document, 'mouseup', handleMouseUp);
+
+        // 阻止冒泡
+        cancelBubble(e);
+
+        // 取消默认事件
+        preventDefaultEvent(e);
+      });
+
+      // 鼠标移动事件处理函数
+      function handleMouseMove(e){
+        var e = e || window.event;
+        el.style.left = pagePos(e).x - x + 'px';
+        el.style.top = pagePos(e).y - y  + 'px';
+      }
+
+      // 鼠标抬起事件处理函数
+      function handleMouseUp(e){
+        var e = e || window.event;
+        // 解除事件绑定
+        removeEvent(document, 'mousemove', handleMouseMove);
+        removeEvent(document, 'mouseup', handleMouseUp);
+      }
+    }
+
+      // 获取鼠标在页面中的坐标位置，包含滚动距离
+     function pagePos(e){
+      var sLeft = getScroll().left,
+          sTop = getScroll().top,
+          cLeft = document.documentElement.clientLeft,
+          cTop = document.documentElement.clientTop;
+      return {
+        x: e.clientX + sLeft - cLeft,
+        y: e.clientY + sTop - cTop
+      }
+     }
+
+
+    //兼容页面被卷去的距离
+    //使用的时候 getScroll().left[左侧] 或者 getScroll().top[头部]
+    function getScroll() {
+      if(window.pageXOffset){
+        return {
+          left: window.pageXOffset,
+          top: window.pageYOffset
+        }
+        
+      }else{
+        return {
+          left : document.documentElement.scrollLeft + document.body.scrollLeft,
+          top: document.documentElement.scrollTop + document.body.scrollTop
+        }
+      }
+    }
+
+    // 获取样式
+    function getStyle(el, prop){
+      if(window.getComputedStyle){
+        if(prop){
+          return window.getComputedStyle(el, null)[prop];
+        }else{
+          return window.getComputedStyle(el, null);
+        }
+      }else{
+        if(prop){
+          return el.currentStyle[prop];
+        }else{
+          return el.currentStyle;
+        }
+      }
+    }
+
+    // 兼容取消默认事件
+    function preventDefaultEvent(e){
+      var e = e || window.event;
+      if(e.preventDefault){
+        e.preventDefault();
+      }else{
+        e.returnValue = false;
+      }
+    }
+
+    // 阻止冒泡
+    function cancelBubble(e){
+      var e = e || window.event;
+      if(e.stopPropagation){
+        e.stopPropagation();
+      }else{
+        e.cancelBubble = true;
+      }
+    }
+
+    // 解除事件绑定
+    function removeEvent(el, type, fn){
+      if(el.addEventListener){
+        el.removeEventListener(type, fn, false);
+      }else if(el.attachEvent){
+        el.detachEvent('on'+ type, function(){
+          fn.call(el);
+        });
+      }else {
+        el['on' + type] = null;
+      }
+    }
+    
+
+  </script>
+</body>
+</html>

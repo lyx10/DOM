@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>steAttribute</title>
+  <style>
+    .running{
+      color: rgb(15, 218, 15)
+    }
+    .warning{
+      color: orange;
+    }
+    .danger{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <ul></ul>
+
+  <script type="text/javascript">
+    var oUl = document.getElementsByTagName('ul')[0];
+
+    function setSystemStatus(status){
+      var oLi = document.createElement('li');
+      oLi.setAttribute('class',status);
+      switch(status){
+        case 'running':
+          oLi.innerHTML = '系统正常运行中......';
+          break;
+        case 'warning':
+          oLi.innerHTML = '系统运行中有告警异常！';
+          break;
+        case 'danger':
+          oLi.innerHTML = '系统存在危险！！';
+          break;
+        default:
+        oLi.innerHTML = '系统处于未知状态';
+
+      } 
+      oUl.appendChild(oLi);
+    }
+    setSystemStatus('running');
+    setSystemStatus('warning');
+    setSystemStatus('danger');
+    setSystemStatus('');
+
+  </script>
+  
+</body>
+</html>

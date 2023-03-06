@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <style type="text/css">
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .inner1,
+    .inner2{
+      width: 50px;
+      height: 50px;
+    }
+
+    .inner1{
+      background-color: green;
+    }
+
+    .inner2{
+      background-color: purple;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="inner1"></div>
+    <div class="inner2"></div>
+  </div>
+  <script type="text/html" id="tpl">
+    <li>这是第{{num}}项&nbsp;<button>删除</button></li>
+  </script>
+  
+  <script>
+    var oBox = document.getElementsByClassName('box')[0];
+
+        addEvent(oBox, 'click', function(ev){
+          var e = ev || window.event,
+              tar = e.target || e.srcElement;
+          
+          switch(tar.className){
+            case 'inner1':
+              console.log('inner1');
+              break;
+            case 'inner2':
+              console.log('inner2');
+              break;
+            default:
+              break;
+          }
+        });
+        // addEvent(oInner, 'click', function(){
+        //   console.log('inner');
+        // });
+
+    // 循环创建50个li start 方法1
+    // 创建oList, frag
+    // var oList = document.createElement('ul'),
+    //     frag = document.createDocumentFragment();
+    
+    // // 循环创建oLi
+    // for(var i = 0; i < 50; i++){
+    //   var oLi = document.createElement('li');
+    //   oLi.innerHTML = '这是第' + (i + 1) + '项<button>删除</button>';
+    //   frag.appendChild(oLi);
+    // }
+
+    // oList.appendChild(frag);
+    // document.body.appendChild(oList);
+
+    // 循环创建50个li end
+
+    // 方法2
+    // var oList = document.createElement('ul'),
+    //     tpl = document.getElementById('tpl').innerHTML;
+    //     list = '';
+
+    // for(var i = 0; i < 50; i++){
+    //   list += tpl.replace(/{{(.*?)}}/, (i + 1));
+    // }
+    // oList.innerHTML = list;
+    // document.body.appendChild(oList);
+    // // 绑定点击删除按钮删除li事件处理函数
+    // // 用事件代理
+    // addEvent(oList, 'click', removeItem);
+
+    // function removeItem(ev){
+    //   var e = ev || window.event,
+    //       tar = e.target || e.srcElement,
+    //       tagName = tar.tagName.toLowerCase();
+
+    //   if(tagName === 'button'){
+    //     tar.parentNode.remove();
+    //   }
+    // }
+
+    function addEvent(el, type, fn){
+      if(el.addEventListener){
+        el.addEventListener(type, fn, false);
+      }else if(el.attachEvent){
+        el.attachEvent('on' + type, fn, function(){
+          fn.call(el);
+        });
+      }else{
+        fn['on' + type] = fn;
+      }
+    }
+  </script>
+</body>
+</html>

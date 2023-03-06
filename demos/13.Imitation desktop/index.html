@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>仿桌面</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="list-container">
+        <ul class="j-list">
+          <li class="item">
+            <div class="img">
+              <img src="./images/4.jpg" alt="xn">
+            </div>
+            <p>小犀牛</p>
+          </li>
+          <li class="item">            
+            <div class="img">
+              <img src="./images/1.jpg" alt="xn">
+            </div>
+            <p>冲浪企鹅</p>
+          </li>
+          <li class="item">            
+            <div class="img">
+              <img src="./images/3.jpg" alt="xn">
+            </div>
+            <p>大可爱</p>
+          </li>
+          <li class="item">            
+            <div class="img">
+              <img src="./images/2.jpg" alt="xn">
+            </div>
+            <p>QQ音乐</p>
+          </li>
+        </ul>
+      </div>
+      <div class="detail">
+        <div class="dt-hd">
+          <div class="hd-title">...</div>
+          <a class="close">
+            <span class="">x</span>
+          </a>
+        </div>
+        <div class="dt-bd"></div>
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li class="item">打开<a href="javascript:;"></a></li>
+          <li class="item">剪切<a href="javascript:;"></a></li>
+          <li class="item">复制<a href="javascript:;"></a></li>
+          <li class="item">粘贴<a href="javascript:;"></a></li>
+          <li class="item">删除<a href="javascript:;"></a></li>
+          <li class="item">取消<a href="javascript:;"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript">
+      var oWin = document.getElementsByClassName('detail')[0],
+          oTitle = oWin.getElementsByClassName('hd-title')[0];
+      myWindow({
+        oList: document.getElementsByClassName("j-list")[0],
+        oWin: oWin,
+        oMenu: document.getElementsByClassName('menu')[0]
+      });
+
+      oTitle.innerText = new Date().clock();
+
+    </script>
+  </body>
+</html>
+

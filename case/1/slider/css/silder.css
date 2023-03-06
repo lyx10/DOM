@@ -1,0 +1,58 @@
+/* 样式初始化 start*/
+body{
+  margin: 0;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+/* 样式初始化 end*/
+
+img{
+  width: 100%;
+  height: 100%;
+}
+.slider-wrap{
+  /* width: 996px; */
+  width: 1000px;
+  height: 510px;
+  border: 1px solid #000;
+  margin: 10px auto;
+}
+
+.slider-list{
+  position: relative;
+  float: left;
+  width: 853px;
+  height: 480px;
+  /* padding: 15px 0; */
+}
+
+.slider-list .slider-item{
+  display: none;
+  position: absolute;
+  height: 510px;
+
+}
+.slider-list .slider-item.active{
+  display: block;
+}
+.thumbs {
+  float: right;
+  width: 143px;
+  height: 480px;
+}
+.thumbs .thumbs-item{
+  height: 80px;
+  opacity: 0.5;
+  margin-bottom: 5px;
+}
+.thumbs .thumbs-item.cur{
+  opacity: 1;
+}

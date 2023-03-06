@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件句柄绑定形式</title>
+    <style type="text/css">
+      button{
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick = 'test()'>点击</button>
+    
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName('button')[0];
+      oBtn.onclick = function(){
+        console.log('b');
+      }
+      
+      function test(){
+        console.log('a');
+      }
+
+    </script>
+  </body>
+</html>

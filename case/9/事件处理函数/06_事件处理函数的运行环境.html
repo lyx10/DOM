@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件处理函数的运行环境</title>
+  </head>
+  <body>
+    <button>点击</button>
+
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName('button')[0];
+      
+      // oBtn.onclick = function(){
+      //   console.log(this)
+      // }
+
+      oBtn.addEventListener('click', function(){
+        console.log(this);
+      },false);
+     
+    </script>
+  </body>
+</html>

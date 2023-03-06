@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件监听</title>
+    <style type="text/css">
+      button{
+        border: 1px solid #000;
+      }
+      .loading{
+        background-color: #ddd;
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击加载更多</button>
+
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName('button')[0];
+
+
+      oBtn.attachEvent('onclick', function(){
+        console.log(this);
+        // 改变button里面的文字
+        oBtn.innerHTML = '加载中...';
+        // 改变button的样式
+        oBtn.className = 'loading';
+
+        // 2秒后还原
+        setTimeout(function(){
+          oBtn.innerHTML = '点击加载更多';
+          oBtn.className = '';
+        },2000);
+      }, false);
+    </script>
+  </body>
+</html>

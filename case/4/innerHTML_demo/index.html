@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>电影列表</title>
+  <style>
+    .title{
+      color: orange
+    }
+    .area{
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <script type="text/javascript">
+    var oUl = document.createElement('ul'),
+        data = [
+          {
+            "title": "功夫熊猫",
+            "area": "中国"
+          },
+          {
+            "title": "海蒂和爷爷",
+            "area": "德国"
+          },
+          {
+            "title": "小孩不笨",
+            "area": "新加坡"
+          }
+        ],
+        item;
+
+    for(var i = 0; i < data.length; i++){
+      item = data[i];
+      var li = document.createElement('li'),
+          h3 = document.createElement('h3'),
+          p = document.createElement('p');
+      
+      h3.innerHTML = '电影名称：<span class="title">' + item.title + '</span>';
+      p.innerHTML = '地区：<span class="area">' + item.area + '</span>';
+      li.appendChild(h3);
+      li.appendChild(p);
+      oUl.appendChild(li);
+    }
+    document.body.appendChild(oUl);
+
+  </script>
+</body>
+</html>

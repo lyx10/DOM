@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style type="text/css">
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    a{
+      text-decoration: none;
+    }
+    
+    ul,
+    li{
+      box-sizing: border-box;
+    }
+
+    .wrap{
+      width: 1200px;
+      height: 200px;
+      margin: 200px auto;
+      
+    }
+
+    .wrap .list{
+      height: 100%;
+    }
+
+    .wrap .list-item{
+      position: relative;
+      float: left;
+      width: 210px;
+      height: 100%;
+      padding: 10px;
+      transition: all 0.6s;
+    }
+
+    .wrap .list-item.active{
+      width: 360px;
+      transition: all 0.6s;
+    }
+
+    .wrap .card{
+      height: 100%;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .wrap .list-item .card:hover{
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .wrap .card .title{
+      width: 170px;
+      height: 50%;
+    }
+
+    .wrap .card .title a{
+      color: #424242;
+      font-size: 14px;
+    }
+
+    .wrap .card .title a:hover{
+      color: #f00;
+    }
+
+    .wrap .card .price{
+      width: 210px;
+      line-height: 70px;
+      font-size: 20px;
+      color: #f00;
+    }
+
+    .wrap .card .img-wrap{
+      position: absolute;
+      right: 20px;
+      bottom: 15px;
+      width: 70px;
+      height: 70px;
+      transition: all 0.6s;
+    }
+
+    .wrap .list-item.active .img-wrap{
+      width: 150px;
+      height: 150px;
+      transition: all 0.6s;
+    }
+
+    .wrap .card .img-wrap img{
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <ul class="list">
+      <li class="list-item active">
+        <div class="card">
+            <div class="title">
+              <a href="javascript:;">OPPO Reno6 Pro+ 新品5G手机 5000万全影像65W闪充智能拍照游戏手机 月海</a>
+            </div>
+            <div class="price">￥1990.00</div>
+            <div class="img-wrap">
+            <a href="javascript:;">
+              <img src="https://img14.360buyimg.com/n7/jfs/t1/76481/21/18271/46220/628cd8adEaa5323c1/6a307552b127c4ee.jpg.avif" alt="" />
+            </a>
+            </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+            <div class="title">
+              <a href="javascript:;">Apple iPhone 13 (A2634) 128GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+            </div>
+            <div class="price">￥6900.00</div>
+            <div class="img-wrap">
+              <a href="javascript:;">
+                <img src="https://img14.360buyimg.com/n7/jfs/t1/82154/22/21712/90827/6319913dE7fb2903f/66c70f81c49b1174.png.avif" alt="">
+              </a>
+            </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+            <div class="title">
+              <a href="javascript:;">一加 10 Pro 全新骁龙 8 哈苏影像2.0 80W超级闪充 8GB+256GB破界黑 5G游戏</a>
+            </div>
+            <div class="price">￥2190.00</div>
+            <div class="img-wrap">
+              <a href="javascript:;">
+                <img src="https://img12.360buyimg.com/n7/jfs/t1/206797/23/19356/64886/6228937fE674ab807/1408747ec4c1c1a0.jpg.avif" alt="" />
+              </a>
+            </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+            <div class="title">
+              <a href="javascript:;">Apple iPhone 12 mini (A2629) 128GB 蓝色 手机 支持移动联通电信5G</a>
+            </div>
+            <div class="price">￥5900.00</div>
+            <div class="img-wrap">
+              <a href="javascript:;">
+                <img src="https://img10.360buyimg.com/n7/jfs/t1/172665/8/11687/140449/60afca61Eff007023/75ee212036b2fd42.jpg.avif" alt="" />
+              </a>
+            </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+            <div class="title">
+              <a href="javascript:;">小米12S Ultra 骁龙8+旗舰处理器 徕卡光学镜头 2K超视感屏 67W快充</a>
+            </div>
+            <div class="price">￥2699.00</div>
+            <div class="img-wrap">
+              <a href="javascript:;">
+                <img src="https://img13.360buyimg.com/n7/jfs/t1/217676/12/9247/25807/61cafaa1E436eb28f/a2a9823bcfa0106e.jpg.avif" alt="" />
+              </a>
+            </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <script type="text/javascript">
+    //utils.js
+
+    //绑定事件处理函数兼容函数
+    function addEvent(el, type, fn){
+      if(el.addEventListener){
+        el.addEventListener(type, fn, false);
+      }else if(el.attachEvent){
+        el.attachEvent('on' + type, function(){
+          fn.call(el);
+        });
+      }else{
+        fn['on' + type] = fn;
+      }
+    }
+
+    //阻止冒泡行为
+    function cancelBubble(event){
+      var e = event || window.event;
+      if(e.stopPropagation){
+        e.stopPropagation();
+      }else{
+        e.cancelBubble = true;
+      }
+    }
+
+    //取消绑定
+    function removeEvent(el, type, fn){
+      if(el.addEventListener){
+        el.removeEventListener(type, fn, false);
+      }else if(el.attachEvent){
+        el.detachEvent('on' + type, fn);
+      }else{
+        fn['on' + type] = null;
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    /***
+    // 第一种，循环绑定li
+    // 获取li
+    (function(doc){
+          //获取列表的每一项
+      var oItems = doc.getElementsByClassName('list-item'),
+          len = oItems.length,
+          //用来控制列表项的激活样式
+          curIdx = 0,
+          item;
+      
+      //init函数，统一管理模块
+      function init(){
+        bindEvent();
+      }
+
+      //与绑定事件处理函数相关的都写这里
+      //循环oItems，给每一项绑定鼠标移入事件处理函数
+      function bindEvent(){
+        for(var i = 0; i < len; i++){
+          //先用item保存循环出来的每一项，节约性能
+          item = oItems[i];
+          
+          addEvent(item, 'mouseover', function(event){
+            var e = event || window.event;
+            //先将原来的有激活样式的还原
+            oItems[curIdx].className = 'list-item';
+            //重新将当前鼠标所在项的下标赋给curIdx
+            curIdx = Array.prototype.indexOf.call(oItems, this);
+            //给鼠标所在的这一项加激活样式
+            oItems[curIdx].className += ' active';
+            //阻止冒泡行为
+            cancelBubble(event)
+
+          });
+      }
+    }
+
+    init();
+    })(document);
+
+    **/
+  </script>
+  <script type="text/javascript">
+    (function(doc){
+      // 第二种，事件代理
+      // 获取ul元素和全部​li元素
+      var oList = doc.getElementsByClassName('list')[0],
+          oItems = document.getElementsByClassName('list-item'),
+          curIdx = 0;
+
+      function init(){
+        bindEvent();
+      }
+
+      function bindEvent(){
+        // 给oList绑定鼠标移入事件处理函数
+        addEvent(oList, 'mouseover', function(){
+          // 鼠标移入oList时给document绑定鼠标移动事件处理函数​
+          addEvent(document, 'mousemove', slide);
+        });
+
+        // 给oList绑定鼠标移出​事件处理函数
+        addEvent(oList, 'mouseout', function(){
+          // 鼠标移出oList时取消绑定document上的鼠标移动事件处理函数
+          removeEvent(document, 'mousemove', slide);
+        });
+      }
+
+      // 事件处理函数
+      function slide(event){
+        
+            //事件对象
+        var e = event || window.event,
+            //事件源对象
+            tar = e.target || e.srcElement,
+            //事件源对象所在的li元素
+            tarEle = getParent(tar, 'li'),
+            //当前项的索引值
+            thisIdx = Array.prototype.indexOf.call(oItems, tarEle);
+        //先判断当前的索引和原来的索引是否相等（鼠标移入的是不是原来那个）
+        // 不相等才改变
+        if(thisIdx !== curIdx){
+          oItems[curIdx].className = 'list-item';
+          curIdx = thisIdx;
+          oItems[curIdx].className += ' active';
+        }
+      }
+
+      // 通过target查找指定的父元素
+      function getParent(target, elemTag){
+        while(target.tagName.toLowerCase() !== elemTag){
+          target = target.parentNode;
+        }
+        return target;
+      }
+
+      // 执行函数
+      init();
+    })(document);
+
+  </script>
+</body>
+</html>

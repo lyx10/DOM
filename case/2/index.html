@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM document对象、获取元素、节点、遍历树</title>
+</head>
+<body>
+  <div>123</div>
+  <div>234</div>
+  <div>345</div>
+  <!-- <div class="box">345</div>
+  <div class="box">678</div> -->
+  <!-- <div class="box1">box1</div> -->
+
+  <!-- <input type="text" name="username" />
+  <div name="box"></div> -->
+
+  <!-- <div class="text">123</div>
+  <div>234</div> -->
+
+  <!-- <div id="box">
+    <h1>
+      <p>123</p>
+    </h1>
+  </div>
+  <div>
+    <p>234</p>
+  </div> -->
+
+  <script type="text/javascript">
+    // var boxes = document.getElementsByClassName('box');
+    // console.log(boxes);  //[div, div, div]
+    // var box = document.getElementsByClassName('box')[0];
+    // console.log(box);  //<div class="box" >123</div>
+
+    // var box1 = document.getElementsByClassName('box1');
+    // console.log(box1);  //[div.box1]
+    // box1[0].style.color = 'red';
+
+    // var input = document.getElementsByName('username')[0];
+    // console.log(input);
+    // var box = document.getElementsByName('box');
+    // console.log(box);
+
+    // var div1 = document.querySelector('div');
+    // console.log(div1);
+    // var div2 = document.querySelector('.text');
+    // console.log(div2);
+    // var div3 = document.querySelector('div')[0];
+    //   console.log(div3);
+
+    // var p1 = document.querySelector('div p');
+    // console.log(p1);
+
+    // var p2 = document.querySelector('div > p');
+    // console.log(p2);
+
+    // var box = document.querySelector('#box');
+    // console.log(box);
+
+
+    // var divs = document.querySelectorAll('div');
+    // console.log(divs);   //[div, div, div]
+
+    // var boxes = document.querySelectorAll('.box');
+    // console.log(boxes); 
+
+    // var boxes = document.querySelectorAll('#box');
+    // console.log(boxes);  //[div#box]
+
+    // var divs = document.getElementsByTagName('div');
+    // console.log(divs);
+    // divs[0].remove();
+    // console.log(divs);
+
+    var divs = document.querySelectorAll('div');
+    console.log(divs);   //HTMLCollection[div, div, div]
+    divs[0].remove();  	 //移除第一个元素
+    console.log(divs);   
+
+  </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM document对象、获取元素、节点、遍历树</title>
+</head>
+<body>
+  <ul>
+    <li>123 
+      <!-- 我是注释君-->
+<!--       <h2>我是标题标签</h2>previousSibling
+      <a href="">我是超链接标签</a>nextSibling
+      <p>我是段落标签</p>234
+    </li>
+  </ul>
+
+  <script type="text/javascript">
+    var li = document.getElementsByTagName('li')[0];
+    console.log(li.childNodes.length);
+    console.log(li.childNodes);
+
+    console.log(li.firstChild);
+    console.log(li.lastChild);
+
+    var a = document.getElementsByTagName('a')[0];
+    console.log(a.nextSibling);
+    console.log(a.previousSibling);
+  </script>
+</body>
+</html>  -->

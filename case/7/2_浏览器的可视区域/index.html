@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html> -->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>浏览器的可视区域, window.innerWidth, window.innerHeight</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+
+    document.documentElement.clientWidth;
+    document.documentElement.clientHeight;
+
+    document.body.clientWidth;
+    document.body.clientHeight;
+
+    // 怪异模式与标准模式
+    document.compatMode
+    // 标准模式：'CSS1Compat'
+    // 怪异模式：'BackCompat'
+
+    // 封装
+    function getViewportSize(){
+      // window.innerWidth存在，就没有解析模式问题
+      if(window.innerWidth){
+        return {
+          width: window.innerWidth,
+          height: window.innerHeight
+        }
+      }else{
+        // 如果window.innerWidth不存在，就要考虑解析模式问题
+        if(document.compatMode === 'BackCompat'){
+          return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight
+        }
+        }else{
+          return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight
+        }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

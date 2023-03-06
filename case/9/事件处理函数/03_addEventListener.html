@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件监听</title>
+    <style type="text/css">
+      button{
+        border: 1px solid #000;
+      }
+      .loading{
+        background-color: #ddd;
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button>点击加载更多</button>
+
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName('button')[0];
+      addEvent(oBtn,'click', function(){
+        // 改变button里面的文字
+        this.innerHTML = '加载中...';
+        // 改变button的样式
+        this.className = 'loading';
+
+        // 2秒后还原
+        var _self = this;
+        setTimeout(function(){
+          _self.innerHTML = '点击加载更多';
+          _self.className = '';
+        },2000);
+      }, false);
+
+      function addEvent(el,type,fn){
+        // 先判断W3C规范的
+        if(el.addEventListener){
+          el.addEventListener(type, function(){
+            // 要改变this指向
+            fn.call(el);
+          }, false);
+          // 再判断IE8及以下的
+        }else if(el.attachEvent){
+          el.attachEvent('on' + type, fn);
+          // 如果都没有，就用最原始的
+        }else{
+          el['on' + type] = fn;
+        }
+      }
+    </script>
+  </body>
+</html>

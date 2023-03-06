@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>阻止默认事件 阻止a标签跳转</title>
+    <style type="text/css">
+      .box-lk{
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: #00ffff;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="box-lk" href='https://www.baidu.com/'>
+      <div class="inner">点击</div>
+    </a>
+
+    <script type="text/javascript">
+      var inner = document.getElementsByClassName('inner')[0];
+      inner.addEventListener('click', function(e){
+        var e = e || window.event;
+        e.preventDefault();
+        console.log('已点击'); 
+      }, false);
+    </script>
+  </body>
+</html>

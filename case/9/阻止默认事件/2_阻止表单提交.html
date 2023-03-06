@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>阻止默认事件，阻止表单提交</title>
+  </head>
+  <body>
+  	<form action="">
+      <input type="text" name="content" />
+      <input type="submit" id="submit" value="提交" />
+    </form>
+
+    <script type="text/javascript">
+      var submit = document.getElementById('submit');
+      
+      submit.addEventListener('click', function(e){
+        var e = e || window.event;
+        e.preventDefault();
+        console.log('已提交'); 
+      }, false);
+      
+    </script>
+  </body>
+</html>

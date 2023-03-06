@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    <meta charset="UTF-8">
+  	<title>计时器</title>
+  </head>
+  <body>
+    <h1>
+      已进行<span class='seconds'>0</span>秒
+    </h1>
+
+    <script>
+      // 1.获取span元素，
+      // 2.定义一个变量seconds，用来作为span元素的innerHTML
+      // 3.设置一个计数器，让seconds隔1秒加一
+      // 4.记到20的时候停止
+
+      // var oSpan = document.getElementsByClassName('seconds')[0],
+      //     seconds = 0,
+      //     timer = null;
+      // timer = setInterval(count, 1000)
+      // function count(){
+      //   oSpan.innerText = ++seconds;
+      //   if(seconds === 20){
+      //     clearInterval(timer);
+      //   }
+      // }
+      var timer1 = setInterval(function(){},1000),
+          timer2 = setInterval(function(){},1000);
+
+      console.log(timer1);
+      console.log(timer2);
+    </script>
+  </body>
+</html>

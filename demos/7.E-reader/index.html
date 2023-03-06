@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电子阅读器</title>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/index.css">
+
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+</head>
+<body>
+  <div class="list-hd">
+    <h3 >书籍列表</h3>
+  </div>
+  <div class="container">
+    <ul class="bk-list">
+      <li class="list-item">
+        <a href="./detail.html" class="item-lk">
+          <div class="bk-pic">
+            <img src="./images/cover.jpg" alt="cover"/>
+          </div>
+          <div class="bk-info">
+            <h2 class="bk-tit">焦虑的人</h2>
+            <p class="auth">弗雷德里克·巴克曼 著</p>
+            <p class="intro">究竟是何种程度的无奈和绝望，迫使一个中年人在新年来临前的早晨，用一把玩具枪抢劫一家无现金银行。</p>
+            <p class="update">更新时间：2022-09-27 13:14</p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <a href="javascript:;" class="s-top-btn"></a>
+
+  <script type="text/javascript" src="./js/utils.js"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript" src="./js/scroll_top.js"></script>
+  <script type="text/javascript">
+    var sTopBtn = new Scroll({
+      sTopBtn: document.getElementsByClassName('s-top-btn')[0]
+    });
+ 
+
+  </script>
+</body>
+</html>

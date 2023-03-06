@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>查看文档可视区域（查询整个文档的宽高）</title>
+  <style>
+    .box{
+      width: 500px;
+      height: 1000px;
+      margin: 30px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">innerBox</div>
+  <br />
+  <h3>END</h3>
+  <hr />
+  <script type="text/javascript">
+    console.log(document.body.scrollWidth);
+    console.log(document.body.scrollHeight);
+
+    document.documentElement.scrollWidth;
+    document.documentElement.scrollHeight;
+
+    // 封装
+    function getDocScrollSize(){
+      if(document.body.scrollWidth){
+        return {
+          width: document.body.scrollWidth,
+          height: document.body.scrollHeight
+        }
+      }else{
+        return {
+          width: document.documentElement.scrollWidth,
+          height: document.documentElement.scrollHeight
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+h2{
+  margin: 0;
+  padding: 0;
+}
+.tab{
+  position: relative;
+  top: 30px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 30px;
+}
+.tab .start,
+.tab .pause{
+  position: absolute;
+  top: 0;
+  outline: none;
+  border: none;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.tab .start{
+  left: 0;
+  background: #ffd544 url(../images/start.jpg) no-repeat center/60px 30px;
+}
+
+.tab .pause{
+  left: 150px;
+  background: #0dc1f3 url(../images/pause.jpg) no-repeat center/60px 30px;
+}
+
+.tab .score{
+  position: absolute;
+  top: 0;
+  right: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.game-mask{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  padding-top: 60px;
+  background-color: rgba(0, 0, 0, .55);
+  transition: all 0.6s;
+}
+
+.game-mask.show{
+  display: block;
+}
+
+.game-mask .over-score{
+  margin: 68px auto;
+  font-size: 42px;
+  color: #00ffff;
+  text-align: center;
+}
+
+.game-mask .over-text{
+  margin: 0 auto;
+  font-size: 50px;
+  color: #fff;
+  text-align: center;
+}
+
+.game-mask .close{
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.game-wrap{
+  position: relative;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 340px;
+  background: #008000 url(../images/background.jpg) no-repeat center/100% 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.game-wrap .round{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #df2aef; 
+}
+
+.game-wrap .round.head{
+  color: #fff;
+  line-height: 20px;
+  font-size: 20px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.game-wrap .food{
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #00ffff;
+}
+
+.game-wrap .round.head.right{
+  transform: rotate(0deg);
+}
+
+.game-wrap .round.head.left{
+  transform: rotateY(180deg);
+}
+
+.game-wrap .round.head.up{
+  transform: rotate(-90deg);
+}
+
+.game-wrap .round.head.down{
+  transform: rotate(90deg);
+}

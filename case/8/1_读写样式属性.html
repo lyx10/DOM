@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>读写样式属性</title>
+  <style>
+    .box{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      top: 50px;
+      left: 50px;
+      border: 1px solid #000;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script type="text/javascript">
+    var oBox = document.getElementsByClassName('box')[0],
+        computeStyle = window.getComputedStyle(oBox, null),
+        boxBorder = window.getComputedStyle(oBox, null)['border'];
+    console.log(computeStyle);
+    console.log(boxBorder);   //1px solid rgb(0, 0, 0)
+
+    console.log(oBox.offsetWidth); //102  算上了边框
+
+    // console.log(oBox.style.width);  //没有结果，DOM无法操作也无法获取样式表，只有用oBox.style.xxx设置了才能读取对应的样式属性值
+    // 写样式属性
+    // oBox.style.backgroundColor = '#ff0';
+    // 读样式属性
+    // console.log(oBox.style.backgroundColor); 
+    //  1.像background-color这种多个单词组合的样式属性，要改成小驼峰
+    //rgb(255, 255, 0)
+
+    // 2.像border这种有复合值的，要分开写。
+    // × oBox.style. border = '1px solid #000';
+    // oBox.style.borderWidth = '1px';
+    // oBox.style.borderStyle = 'solid';
+    // oBox.style.borderColor = '#000';
+
+    // 保留字属性前面加css,例如float
+    // oBox.style.cssFloat = 'left'
+  </script>
+</body>
+</html>

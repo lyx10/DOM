@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h5>剩余：<span></span></h5>
+  <!-- <script type="text/javascript" src="./js/9_写一个数字时钟.js"></script>
+  <script type="text/javascript">
+    var oH5 = document.getElementsByTagName('h5')[0];
+    setInterval(function(){
+      var time = new Date().clock();
+      oH5.innerHTML = time;
+    },1000); -->
+
+    <script type="text/javascript" src="./js/10_写一个倒计时.js"></script>
+    <script type="text/javascript">
+      var oSpan = document.getElementsByTagName('span')[0],
+          t = null
+      t = setInterval(function(){
+        var time = new Date().countDown('2022/9/17 19:35:00', t);
+        oSpan.innerHTML = time;
+      },1000); 
+
+    </script>
+  </script>
+</body>
+</html>

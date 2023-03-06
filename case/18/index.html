@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+  <style type="text/css">
+    .box{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+  <script type="text/javascript">
+  oBox = document.getElementsByClassName('box')[0];
+  document.onkeydown = function(ev){
+    var e = ev || window.event,
+        code = e.keyCode,
+        sLeft =  getStyle(oBox, 'left'),
+        sTop =  getStyle(oBox, 'top');
+       
+	  switch(code){
+      case 37:
+        oBox.style.left = sLeft - 50 + 'px';
+        break;
+
+      case 39:
+        oBox.style.left = sLeft + 50 + 'px';
+        break;
+
+      case 38:
+        oBox.style.top = sTop - 50 + 'px';
+        break;
+
+      case 40:
+        oBox.style.top = sTop + 50 + 'px';
+        break;
+      default:
+        break;
+    }
+  };
+
+function getStyle(el, prop){
+  if(window.getComputedStyle){
+   if(prop){
+    return parseInt(window.getComputedStyle(el, null)[prop]);
+   }else{
+    return window.getComputedStyle(el, null);
+   }
+  }else{
+    if(prop){
+      return parseInt(el.currentStyle[prop]);
+    }else{
+      return el.currentStyle;
+    }
+  }
+}
+
+  </script>
+  
+</body>
+</html>

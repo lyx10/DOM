@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>根据条件进行链接跳转</title>
+</head>
+<body>
+  <ul>
+    <li><a href="javascript:;" data-sort="pay" data-uri="one">第一课时</a></li>
+    <li><a href="javascript:;" data-sort="free" data-uri="two">第二课时</a></li>
+    <li><a href="javascript:;" data-sort="pay" data-uri="three">第三课时</a></li>
+    <li><a href="javascript:;" data-sort="pay" data-uri="four">第四课时</a></li>
+    <li><a href="javascript:;" data-sort="free" data-uri="five">第五课时</a></li>
+  </ul>
+  
+
+  <script type="text/javascript">
+    var links = document.getElementsByTagName('a');
+    for(var i = 0; i < links.length; i++){
+      (function(j){
+        links[j].onclick = function(){
+          var sort = this.dataset.sort,
+              uri = this.dataset.uri;
+          if(sort === 'free'){
+            window.open('https://baidu.com/?name=' + uri);
+          }else{
+            alert('这是付费知识');
+          }
+        }
+      })(i);
+    }
+  </script>
+  
+</body>
+</html>

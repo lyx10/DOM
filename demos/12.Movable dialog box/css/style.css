@@ -1,0 +1,53 @@
+.container{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 1366px;
+  height: 695px;
+  background: url(../images/5.jpg) center/100% 100% no-repeat;
+}
+.modal-container{
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+.md-hd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 44px;
+  line-height: 44px;
+  border: 1px solid #000;
+  background-color: rgb(240, 255, 255);
+}
+
+.md-hd .hd-title{
+  text-align: center;
+}
+
+.md-hd .hd-close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  text-align: center;
+  color: #666;
+}
+
+.hd-close:hover{
+  background-color: #f00;
+  color: #fff;
+}
+
+.md-main{
+  width: 400px;
+  height: 360px;
+  border: 1px solid #000;
+  border-top: none;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.icon-close:before {
+  content: "\ea0f";
+}

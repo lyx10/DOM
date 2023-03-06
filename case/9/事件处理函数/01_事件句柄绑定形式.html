@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>事件句柄绑定形式</title>
+    <style type="text/css">
+      button{
+        border: 1px solid #000;
+      }
+      .loading{
+        background-color: #ddd;
+        color:#fff;
+      }
+    </style>
+  </head>
+  <body>
+    <button >点击加载更多</button>
+    <button class="btn">点击加载更多</button>
+
+    <script type="text/javascript">
+      var oBtn = document.getElementsByTagName('button')[0],
+          oBtn2 = document.getElementsByClassName('btn')[0];
+      oBtn.onclick = function(){
+        // 改变button里面的文字
+        this.innerHTML = '加载中...';
+        // 改变button的样式
+        this.className = 'loading';
+
+        // 2秒后还原
+        var _self = this;
+        setTimeout(function(){
+          _self.innerHTML = '点击加载更多';
+          _self.className = '';
+        },2000);
+      }
+
+      oBtn2.onclick = function(){
+        console.log(1);
+      }
+
+      oBtn2.onclick = function(){
+        console.log(2);
+      }
+    </script>
+  </body>
+</html>

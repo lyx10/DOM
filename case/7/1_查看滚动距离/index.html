@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查看滚动距离, window.pageXOffset, window.pageYOffset</title>
+  <style>
+    body{
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h3 style="width: 1200px;">111</h3>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <h3>222</h3>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <h3>end</h3>
+  <script type="text/javascript">
+    window.pageXOffset;
+    window.pageYOffset;
+
+    document.body.scrollLeft;
+    document.body.scrollTop;
+
+    document.documentElement.scrollLeft;
+    document.documentElement.scrollTop;
+
+    // 封装
+    function getScrollOffset(){
+      if(window.pageXOffset){
+        return {
+          letf: window.pageXOffset,
+          top: window.pageYOffset
+        }
+      }else{
+        return {
+          letf: document.body.scrollLeft + document.documentElement.scrollLeft,
+          top: document.body.scrollTop + document.documentElement.scrollTop
+        }
+      }
+    }
+
+  </script>
+</body>
+</html>

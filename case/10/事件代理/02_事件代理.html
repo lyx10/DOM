@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta  charset="UTF-8"/>
+    <title>事件委托</title>
+  </head>
+  <body>
+    <button>添加</button>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+
+    <script type="text/javascript">
+      var oList = document.getElementsByTagName("ul")[0],
+          oItems = oList.getElementsByTagName("li"),
+          oBtn = document.getElementsByTagName("button")[0],
+          item;
+
+      // 事件委托，只需要给父级绑定点击事件处理函数，
+      // 当子元素被点击时，事件冒泡会将点击事件传递给父元素，
+      // 父元素的点击事件处理函数里面只要获取到目标对象，
+      // 然后打印目标对象的innerHTML,就可以实现需求
+      // 1.给父元素绑定点击事件处理函数
+      oList.onclick = function(e){
+            // 2.获取事件对象
+        var e = e || window.event,
+            // 3.获取事件源对象
+            tar = e.target || e.srcElement;
+        console.log(tar.innerHTML);
+      }
+
+
+      // 通过按钮添加的元素并没有绑定事件处理函数。因为是循环绑定在先，按钮被点击在后。
+      oBtn.onclick = function(){
+        var li = document.createElement("li");
+        li.innerHTML = oItems.length + 1;
+        oList.appendChild(li);
+      }
+    </script>
+  </body>
+</html>

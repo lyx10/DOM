@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap">
+    <h1>这是标题</h1>
+    <p class="content">
+      <style type="text/css">
+        .content{
+          color: orange;
+        }
+      </style>
+      这是我的文章内容
+      <br />
+      这是我的文章内容
+      <br />
+      这是我的文章内容
+      <br />
+      <span style="display: none;">这是我的隐藏内容</span>
+    </p>
+  </div>
+
+  <textarea name="" id="oInnerText" ></textarea>
+  <textarea name="" id="oTextContent" ></textarea>
+
+
+  <script type="text/javascript">
+    var oWrap = document.getElementsByClassName('wrap')[0],
+        oInnerText = document.getElementById('oInnerText'),
+        oTextContent = document.getElementById('oTextContent');
+
+    oInnerText.innerHTML = oWrap.innerText;
+    oTextContent.innerHTML = oWrap.textContent;
+        
+  </script>
+</body>
+</html>

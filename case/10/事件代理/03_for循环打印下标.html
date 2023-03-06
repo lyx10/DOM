@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta  charset="UTF-8"/>
+    <title>循环绑定点击事件</title>
+  </head>
+  <body>
+    <!-- <button>添加</button> -->
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+
+    <script type="text/javascript">
+      var oList = document.getElementsByTagName("ul")[0],
+          oItems = oList.getElementsByTagName("li"),
+          // oBtn = document.getElementsByTagName("button")[0],
+          item;
+
+      // 循环绑定能实现打印下标
+      
+      for(var i = 0; i < oItems.length; i++){
+          item = oItems[i];
+          (function(i){
+            item.onclick = function(){
+              console.log(i);
+            }
+          })(i);
+      }
+      
+      
+
+      // // 通过按钮添加的元素并没有绑定事件处理函数。因为是循环绑定在先，按钮被点击在后。
+      // oBtn.onclick = function(){
+      //   var li = document.createElement("li");
+      //   li.innerHTML = oItems.length + 1;
+      //   oList.appendChild(li);
+      // }
+    </script>
+  </body>
+</html>

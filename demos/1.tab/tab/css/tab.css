@@ -1,0 +1,45 @@
+.tab-wrap{
+  width: 500px;
+  height: 600px;
+  margin: 50px auto;
+}
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.tab {
+  width: 500px;
+  height: 40px;
+  background-color: #ddd;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.tab .tab-item{
+  float: left;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.tab .tab-item.cur {
+  background-color: #000;
+  color: #fff;
+}
+.content{
+  width: 500px;
+  height: 300px;
+  border: 1px solid #000;
+}
+.content .content-item{
+  display: none;
+  width: 500px;
+  height: 300px;
+  line-height: 300px;
+  font-size: 50px;
+  text-align: center;
+}
+.content .content-item.active{
+  display: block;
+}

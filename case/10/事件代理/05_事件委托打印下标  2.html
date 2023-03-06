@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta  charset="UTF-8"/>
+    <title>循环绑定点击事件</title>
+  </head>
+  <body>
+    <button>添加</button>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+      <li>9</li>
+      <li>10</li>
+    </ul>
+
+    <script type="text/javascript">
+      var oList = document.getElementsByTagName("ul")[0],
+          oItems = oList.getElementsByTagName("li"),
+          oBtn = document.getElementsByTagName("button")[0],
+          item;
+
+      oList.onclick = function(e) {
+        var e = e || window.event,
+            tar = e.target || e.srcElement;
+        // 不用遍历也可以，借用数组的indexOf方法，就能查到对应的下标
+        // 由于oItems是类数组，没办法直接调用数组的方法，所以要用上call
+        var idx = Array.prototype.indexOf.call(oItems,tar);
+        console.log(idx);
+
+      }
+     
+      oBtn.onclick = function(){
+        var li = document.createElement("li");
+        li.innerHTML = oItems.length + 1;
+        oList.appendChild(li);
+      }
+    </script>
+  </body>
+</html>

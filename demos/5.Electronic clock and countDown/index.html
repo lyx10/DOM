@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日期对象、定时器</title>
+</head>
+<body>
+  <p class="time"></p>
+  <h3 class="contDown"></h3>
+  
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript">
+    (function(doc){
+      var oTime = doc.getElementsByClassName('time')[0],
+          oH3 = doc.getElementsByClassName('contDown')[0],
+          t = null;
+      setInterval(function() {
+        date = new Date().clock();
+        oTime.innerHTML = date;
+
+      },1000);
+      t = setInterval(function(){
+        countdown = new Date().countDown("2022/09/13 16:09:00", t);
+        oH3.innerHTML = countdown;
+      },1000);
+          
+    })(document);
+  </script>
+</body>
+</html>

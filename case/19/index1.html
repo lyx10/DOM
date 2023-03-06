@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="">
+    // 什么是本地对象
+    // ECMAScript自带的对象：
+    /**
+     * Function
+     * Object
+     * Array
+     * String
+     * Number
+     * Boolean
+     * Error
+     * Date
+    */
+    // 内置对象:
+    /**
+     * Math
+    */
+
+    nextSibling nextElementSibling
+    previousSibling previousElementSibling 
+    parentNode 
+    childNodes children
+    getElementById(),
+    getElementsByTag(),
+    getElementsByTagName(),
+    getElementsByClassName()
+
+    querySelector()
+    querySelectorAll()
+
+    createElement()
+    createDocumentFragment()
+    appendChild()
+    append()
+
+    parentNode.removeChild()
+    node.remove()
+    // 修改
+    parentNode.replace()
+    // 拷贝
+    cloneNode(true)
+
+    // 
+    // 找到任意一个父元素的子元素的节点
+    Element.prototype.elemChildren = function(index){
+      var childs = this.childNodes,
+          len = childs.length,
+          temp = {
+            "length": 0,
+            "splice": Array.prototype.splice
+          },
+          item;
+      if(index !== undefined && typeof(index) !== 'number'){
+        return undefined;
+      }else {
+        for(i = 0; i < len; i++){
+          item = childs[i];
+          if(item.nodeType === 1){
+            temp[temp['length']] = item;
+            tem['length']++;
+          }
+        }
+      }
+
+      if(index !== undefined){
+        return temp[index];
+      }else{
+        return temp;
+      }
+    }
+
+    // 返回父元素节点
+    // 没有参数，返回最近的父元素节点
+    // 参数（number）指定层数的父元素节点
+
+    Element.prototype.elemParent = function(n){
+      var elem = this;
+      if(n === undefined || typeof(n) !== 'number'){
+        return elem.parentNode;
+      }else if(n < 0){
+        return undefined;
+      }
+        while(n){
+          if (elem.nodeName === 'HTML') {
+            elem = null;
+            return elem;
+          }
+          elem = elem.parentNode;
+          n--
+        }
+        return elem;
+    }
+
+    Node.prototype.insertAfter = function(newNode, referenceNode){
+      if(referenceNode.nextElementSibling){
+        this.insertBefore(newNode, referenceNode.nextElementSibling);
+      }else{
+        this.appendChild(newNode);
+      }
+    }
+
+
+
+    // 宿主对象 document
+  </script>
+</body>
+</html>

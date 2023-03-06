@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>冒泡与捕获</title>
+    <style type="text/css">
+      .wrapper{
+        width: 200px;
+        height: 200px;
+        background-color: rgb(95, 237, 95);
+      }
+      .outer{
+        width: 150px;
+        height: 150px;
+        background-color: yellow;
+      }
+      .inner{
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="outer">
+        <div class="inner"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var oWrapper = document.getElementsByClassName('wrapper')[0],
+          oUter = oWrapper.getElementsByClassName('outer')[0],
+          oInner = oUter.getElementsByClassName('inner')[0];
+
+      oWrapper.addEventListener('click', function(){
+        console.log('wrapper(冒泡)');
+      }, false);
+
+      oUter.addEventListener('click', function(){
+        console.log('outer(冒泡)');
+      }, false);
+
+      oInner.addEventListener('click', function(){
+        console.log('inner(冒泡)');
+      }, false);
+
+
+// -------------------------------
+      oWrapper.addEventListener('click', function(){
+        console.log('wrapper(捕获)');
+      }, true);
+
+      oUter.addEventListener('click', function(){
+        console.log('outer(捕获)');
+      }, true);
+
+      oInner.addEventListener('click', function(){
+        console.log('inner(捕获)');
+      }, true);
+
+      // 点击inner
+      // 打印
+      // wrapper(捕获)
+      // outer(捕获)
+      // inner(捕获)
+      // inner(冒泡)
+      // outer(冒泡)
+      // wrapper(冒泡)
+    </script>
+  </body>
+</html>

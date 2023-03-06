@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style type="text/css">
+    a{
+      text-decoration: none;
+    }
+    ul{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .drawdown {
+      position: relative;
+      width: 200px;
+      height: 50px;
+      background-color: #333;
+    }
+    .drawdown::after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 18px;
+      right: 15px;
+      width: 15px;
+      height: 15px;
+      background-image: url('./images/arrow-down.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    .drawdown.active::after{
+      background-image: url('./images/arrow-top.png');
+    }
+   .drawdown .list{
+      display: block;
+      height: 0;
+      overflow: hidden;
+    }
+    /* .drawdown:hover .list{
+      display: block;
+    }  */
+    .drawdown a {
+      display: block;
+    }
+    .drawdown .main {
+      height: 100%;
+      text-align: center;
+      line-height: 50px;
+      color: #fff;
+      font-weight: 700;
+    }
+    .drawdown .list-item{
+      height: 40px;
+      background-color: #555;
+    }
+    .drawdown .list-item:hover{
+      background-color: #333;
+    }
+    .drawdown .list-item a {
+      height: 100%;
+      color: #999;
+      text-align: center;
+      line-height: 40px;
+    }
+   </style>
+</head>
+<body>
+
+
+  <div class="drawdown">
+    <a href="javascript:;" class="main">下拉菜单</a>
+    <ul class="list">
+      <li class="list-item"><a href="">第1个项目</a></li>
+      <li class="list-item"><a href="">第2个项目</a></li>
+      <li class="list-item"><a href="">第3个项目</a></li>
+      <li class="list-item"><a href="">第4个项目</a></li>
+      <li class="list-item"><a href="">第5个项目</a></li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    // 获取子元素节点
+    Element.prototype.getChildren = function(index){
+      var childNodes = this.childNodes,
+          len = childNodes.length,
+          temp = {
+            "length": 0,
+            "splice": Array.prototype.splice
+          },
+          type = typeof(index),
+          item;
+      for(var i = 0; i < len; i++){
+        item = childNodes[i];
+        if(item.nodeType === 1){
+          temp[temp['length']] = item;
+          temp['length']++;
+        }
+      }
+      if(index !== undefined && type !== 'number'){
+        return undefined
+      }
+      return index === undefined ? temp : temp[index];
+
+    }
+
+    // 获取元素的计算样式
+    function getComputedStyles(el, prop){
+      if(window.getComputedStyle){
+        if(prop){
+          return window.getComputedStyle(el,null)[prop];
+        }else{
+          return window.getComputedStyle(el,null);
+        }
+      }else{
+        if(prop){
+          return el.currentStyle[prop];
+        }else{
+          return el.currentStyle;
+        }
+      }
+    }
+
+
+    var drawdown = document.getElementsByClassName('drawdown')[0],
+        oUl = drawdown.getChildren(1),
+        timer = null;
+    
+    // // 绑定鼠标事件移入处理函数
+    // drawdown.onmouseenter = function(){
+    //   console.log('enter');
+    //   this.className += ' active';
+    //   oUl.style.display = 'block';
+    // }
+
+    // // 绑定鼠标事件移出处理函数
+    // drawdown.onmouseleave = function(){
+    //   console.log('leave');
+    //   this.className = 'drawdown';
+    //   oUl.style.display = 'none';
+    // }
+
+    // 运动效果
+
+    // 鼠标移入
+    drawdown.onmouseenter = function(){
+      clearInterval(timer);
+      var oUlHeight = parseInt(getComputedStyles(oUl, 'height')),
+          speed = 1;
+      this.className += ' active';
+      timer = setInterval(function(){
+        // console.log(1);
+        oUlHeight += speed;
+        oUl.style.height = oUlHeight + 'px';
+        if(oUlHeight >= 200){
+          clearInterval(timer);
+        }
+      },1);  
+    }
+
+    // 鼠标移出
+    drawdown.onmouseleave = function(){
+      var oUlHeight = parseInt(getComputedStyles(oUl, 'height')),
+          speed = 1;
+      this.className = 'drawdown';
+      timer = setInterval(function(){
+        // console.log(1);
+        oUlHeight -= speed;
+        oUl.style.height = oUlHeight + 'px';
+        if(oUlHeight <= 0){
+          clearInterval(timer);
+        }
+      },1);  
+    }
+    
+  </script>
+  
+</body>
+</html>

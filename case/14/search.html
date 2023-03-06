@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width", initial-scale=1.0" />
+    <title>搜索框</title>
+    <style type="text/css">
+      input{
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+      }
+
+      .input-wrap{
+        position: relative;
+        width: 250px;
+        height: 35px;
+        margin: 50px auto;
+      }
+
+      .input-wrap .auto-kw{
+        position: absolute;
+        top: 8px;
+        left: 6px;
+        font-size: 14px;
+        color: #989898;
+        z-index: -1;
+      }
+
+      .input-wrap .search-input{
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: 1px solid #ddd;
+        text-indent: 5px;
+        color: #424242;
+      }
+
+      .input-wrap .auto-kw.show{
+        display: block;
+        color: #989898;
+      }
+
+      .input-wrap .auto-kw.hide{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="input-wrap">
+      <div id="j_auto_kw" class="auto-kw">推荐词</div>
+      <input type="text" id="j_search_kw" class="search-input" />
+    </div>
+    <div style="display: none" id="j_recom_kw">
+      ["美白独丽日", "LG显示器", "洗发水套装", "电脑主机", "笔记本内存条"]
+    </div> 
+
+    <script type="text/javascript">
+      window.onload = function(){
+        init();
+      }
+
+      function init(){
+        keySearch();
+      }
+
+      var keySearch = (function(doc){
+        // 获取id为j_auto_kw的元素
+        // 获取id为j_search_kw的元素
+        // 获取id为j_recom_kw的元素的innerText
+        var autoKw = doc.getElementById('j_auto_kw'),
+            searchKw = doc.getElementById('j_search_kw'),
+            recomKw = JSON.parse(doc.getElementById('j_recom_kw').innerText),
+          	t = null,
+          	kwOrder = 0;
+        
+      	// 2.绑定事件处理函数
+        (function bindEvent(){
+          // 聚焦事件
+          addEvent(searchKw, 'focus', function(){
+            // 聚焦时停止轮播推荐词
+            clearInterval(t);
+            // 推荐词颜色变浅一些
+            autoKw.style.color = '#ccc';
+          });
+
+          // 失去焦点事件
+          addEvent(searchKw, 'blur', function(){
+            // 要根据输入框有无内容改变autoKw样式
+            autoKwShow(this.value, true);
+          });
+
+          // input事件
+          addEvent(searchKw, 'input', function(){
+            autoKwShow(this.value, false);
+          });
+          addEvent(searchKw, 'propertychange', function(){
+            autoKwShow(this.value, false);
+          });
+        })();
+
+        // 改变autoKw样式函数
+        function autoKwShow(val, isBlur){
+          var len = val.length;
+          if(len <= 0){
+            // 显示推荐词
+            autoKw.className = 'auto-kw show';
+            // 如果是失去焦点状态颜色要变回深一点的
+            autoKw.style.color = isBlur ? '#989898' : '#ccc';
+          }else{
+            // 隐藏推荐词
+            autoKw.className = 'auto-kw hide';
+          }
+        }
+
+        // 1.设置推荐词自动轮播
+        function setAutoKws(){
+          autoKwChange();
+          t = setInterval(autoKwChange, 3000)
+        }
+
+        // 切换推荐词函数
+        function autoKwChange(){
+          var len = recomKw.length;
+          autoKw.innerText = recomKw[kwOrder];
+          kwOrder = kwOrder >= len - 1 ? 0 : kwOrder + 1;
+        }
+
+        return function(){
+          setAutoKws();
+        }
+        
+      })(document);
+
+      // utils.js
+      function addEvent(elem, type, fn){
+        if(elem.addEventListener){
+          elem.addEventListener(type, fn, false);
+        }else if(elem.attachEvent){
+          elem.attachEvent('on' + type, function(){
+            fn.call(fn);
+          });
+        }else{
+          elem['on' + type] = fn;
+        }
+      }
+    </script>
+  </body>
+</html>

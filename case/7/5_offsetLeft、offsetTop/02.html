@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>offsetLeft 父元素没有定位</title>
+  <style>
+    body{
+      margin: 0;
+    }
+    .parent{
+      /* position: absolute;
+      top: 100px;
+      left: 100px; */
+      overflow: hidden;
+      margin-top: 100px;
+      margin-left: 100px;
+      width: 300px;
+      height: 300px;
+      background-color: yellow;
+    }
+    .son{
+      width: 100px;
+      height: 100px;
+      margin: 100px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="son"></div>
+  </div>
+  <script type="text/javascript">
+    var box = document.getElementsByClassName('son')[0];
+    console.log(box.offsetLeft);
+    console.log(box.offsetParent);
+  </script>
+</body>
+</html>
